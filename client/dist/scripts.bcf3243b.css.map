@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles/_main.scss","styles/_variables.scss"],"names":[],"mappings":"AAAA;EACI,kBCDG","file":"scripts.bcf3243b.css","sourceRoot":"..","sourcesContent":["body {\n    background-color: $c-bg;\n}","$c-bg: red;"]}
