@@ -189,7 +189,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/object-assign/index.js":[function(require,module,exports) {
+},{"./img/bg.png":[["bg.676069fa.png","styles/img/bg.png"],"styles/img/bg.png"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"node_modules/object-assign/index.js":[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -25776,7 +25776,15 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"scripts/components/App.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"styles/img/morpheus.svg":[function(require,module,exports) {
+module.exports = "/../../morpheus.f6c118a5.svg";
+},{}],"styles/img/morpheus2.svg":[function(require,module,exports) {
+module.exports = "/../../morpheus2.feed0bc7.svg";
+},{}],"styles/img/morpheus3.svg":[function(require,module,exports) {
+module.exports = "/../../morpheus3.73ddd695.svg";
+},{}],"styles/img/logo.svg":[function(require,module,exports) {
+module.exports = "/../../logo.1579a086.svg";
+},{}],"scripts/components/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -25785,6 +25793,14 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
+
+var _morpheus = _interopRequireDefault(require("../../styles/img/morpheus.svg"));
+
+var _morpheus2 = _interopRequireDefault(require("../../styles/img/morpheus2.svg"));
+
+var _morpheus3 = _interopRequireDefault(require("../../styles/img/morpheus3.svg"));
+
+var _logo = _interopRequireDefault(require("../../styles/img/logo.svg"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25812,15 +25828,113 @@ function (_React$Component) {
   _inherits(App, _React$Component);
 
   function App(props) {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+    _this.interval = null;
+    return _this;
   }
 
   _createClass(App, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.interval = setInterval(this.setEffect, 4000);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      clearInterval(this.interval);
+    }
+  }, {
+    key: "setEffect",
+    value: function setEffect() {
+      var rand = Math.random() * 6;
+      var n1 = document.querySelector('#name');
+      var n2 = document.querySelector('#name2');
+      var n3 = document.querySelector('#name3');
+
+      switch (Math.floor(rand)) {
+        case 0:
+        case 1:
+        case 2:
+          n1.classList.remove('power');
+          n2.classList.remove('power');
+          n3.classList.remove('power');
+          n1.classList.add('shock');
+          n2.classList.add('shock');
+          n3.classList.add('shock');
+          break;
+
+        case 3:
+        case 4:
+          n1.classList.remove('shock');
+          n2.classList.remove('shock');
+          n3.classList.remove('shock');
+          n1.classList.add('power');
+          n2.classList.add('power');
+          n3.classList.add('power');
+          break;
+
+        case 5:
+          n1.classList.remove('power');
+          n2.classList.remove('power');
+          n3.classList.remove('power');
+          n1.classList.remove('shock');
+          n2.classList.remove('shock');
+          n3.classList.remove('shock');
+          break;
+      }
+    }
+  }, {
+    key: "renderGfx",
+    value: function renderGfx() {
+      return _react.default.createElement("div", {
+        className: "wrapper"
+      }, _react.default.createElement("img", {
+        id: "name",
+        className: "",
+        src: _morpheus.default
+      }), _react.default.createElement("img", {
+        id: "name2",
+        className: "",
+        src: _morpheus2.default
+      }), _react.default.createElement("img", {
+        id: "name3",
+        className: "",
+        src: _morpheus3.default
+      }), _react.default.createElement("img", {
+        id: "logo",
+        src: _logo.default
+      }), _react.default.createElement("div", {
+        className: "social-icons"
+      }, _react.default.createElement("p", null, "social links"), _react.default.createElement("div", {
+        className: "social-icons--icons"
+      }, _react.default.createElement("a", {
+        href: "https://www.facebook.com/morpheusband/",
+        target: "_blank",
+        rel: "noopener noreferrer"
+      }, _react.default.createElement("ion-icon", {
+        name: "logo-facebook"
+      })), _react.default.createElement("a", {
+        href: "",
+        target: "_blank",
+        rel: "noopener noreferrer"
+      }, _react.default.createElement("ion-icon", {
+        name: "logo-instagram"
+      })), _react.default.createElement("a", {
+        href: "https://www.youtube.com/channel/UCx0EfqB7cy9ZSTCAl3xTgkQ",
+        target: "_blank",
+        rel: "noopener noreferrer"
+      }, _react.default.createElement("ion-icon", {
+        name: "logo-youtube"
+      })))));
+    }
+  }, {
     key: "render",
     value: function render() {
-      return _react.default.createElement("h1", null, "react component loaded");
+      return this.renderGfx();
     }
   }]);
 
@@ -25829,7 +25943,7 @@ function (_React$Component) {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js"}],"scripts/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../../styles/img/morpheus.svg":"styles/img/morpheus.svg","../../styles/img/morpheus2.svg":"styles/img/morpheus2.svg","../../styles/img/morpheus3.svg":"styles/img/morpheus3.svg","../../styles/img/logo.svg":"styles/img/logo.svg"}],"scripts/index.js":[function(require,module,exports) {
 "use strict";
 
 require("../styles/index.scss");
@@ -25845,8 +25959,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var reactContainer = document.querySelector('#reactContainer');
 
 _reactDom.default.render(_react.default.createElement(_App.default, null), reactContainer);
-
-console.log('scripts booted');
 },{"../styles/index.scss":"styles/index.scss","react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./components/App":"scripts/components/App.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -25875,7 +25987,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59333" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52835" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

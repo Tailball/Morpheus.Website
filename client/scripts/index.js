@@ -7,5 +7,3 @@ import App from './components/App';
 
 const reactContainer = document.querySelector('#reactContainer');
 ReactDom.render(<App />, reactContainer);
-
-console.log('scripts booted');
